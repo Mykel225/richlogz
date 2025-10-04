@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bank of America</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th {
+      background-color: #28a745;
+      padding: 12px;
+      font-size: 18px;
+      text-align: left;
+      color: white;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #444;
+    }
+
+    .buy-btn, .sold-btn {
+      padding: 6px 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .buy-btn {
+      background-color: #3b82f6;
+    }
+
+    .sold-btn {
+      background-color: red;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>BANK OF AMERICA</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>DESCRIPTION</th>
+      <th>GENDER</th>
+      <th>BALANCE</th>
+      <th>PRICE</th>
+      <th>PURCHASE</th>
+    </tr>
+  </thead>
+  <tbody id="account-table-body">
+    <!-- Data will be inserted by JS -->
+  </tbody>
+</table>
+
+<script>
+  const data = [
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$1632", price: "$80", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$2164", price: "$160", status: "SOLD"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$3431", price: "$270", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$4737", price: "$370", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$5886", price: "$450", status: "SOLD"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$8526", price: "$681", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$4143", price: "$385", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$7237", price: "$381", status: "SOLD"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$7374", price: "$385", status: "BUY"},
+    {desc: "CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$11154", price: "$616", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$8001", price: "$401", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$7298", price: "$380", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$10421", price: "$543", status: "SOLD"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$7198", price: "$380", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$7718", price: "$393", status: "BUY"},
+    {desc: "SAVINGS+BANK+MAIL ACCESS ONLY+BILLING", gender: "MALE", balance: "$10653", price: "$566", status: "BUY"},
+    {desc: "CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$7926", price: "$399", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$7490", price: "$388", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$9435", price: "$380", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$14150", price: "$915", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$47477", price: "$1375", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$13623", price: "$863", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$10309", price: "$531", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$11743", price: "$675", status: "SOLD"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$8947", price: "$424", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$7248", price: "$382", status: "BUY"},
+    {desc: "SAVINGS ONLY+BANK ACCESS ONLY", gender: "MALE", balance: "$6985", price: "$350", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$7198", price: "$380", status: "SOLD"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$7248", price: "$382", status: "BUY"},
+    {desc: "CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$7598", price: "$388", status: "BUY"},
+    {desc: "CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$6963", price: "$349", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$6317", price: "$323", status: "BUY"},
+    {desc: "SAVINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$7310", price: "$383", status: "BUY"},
+    {desc: "SAVINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$6153", price: "$317", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$7237", price: "$381", status: "BUY"},
+    {desc: "SAVINGS+CHECKINGS+BANK ACCESS ONLY", gender: "FEMALE", balance: "$7374", price: "$385", status: "BUY"},
+    {desc: "CHECKINGS+BANK ACCESS ONLY", gender: "MALE", balance: "$11154", price: "$616", status: "BUY"}
+  ];
+
+  const tableBody = document.getElementById("account-table-body");
+
+  data.forEach(entry => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${entry.desc}</td>
+      <td>${entry.gender}</td>
+      <td>${entry.balance}</td>
+      <td>${entry.price}</td>
+      <td>
+        ${
+          entry.status === "BUY"
+            ? `<button class="buy-btn" onclick="buy()">BUY</button>`
+            : `<button class="sold-btn" onclick="sold()">SOLD</button>`
+        }
+      </td>
+    `;
+    tableBody.appendChild(row);
+  });
+
+  function buy() {
+    window.location.href = "nextpage.html"; // Replace with your actual page
+  }
+
+  function sold() {
+    alert("This log is already sold!");
+  }
+</script>
+
+</body>
+</html>

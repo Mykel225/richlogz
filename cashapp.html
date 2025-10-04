@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CashApp Logs</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th {
+      background-color: #28a745;
+      padding: 12px;
+      font-size: 18px;
+      text-align: left;
+      color: white;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #444;
+    }
+
+    .buy-btn, .sold-btn {
+      padding: 6px 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .buy-btn {
+      background-color: #3b82f6;
+    }
+
+    .sold-btn {
+      background-color: red;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>CASHAPP LOGS</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>DESCRIPTION</th>
+      <th>GENDER</th>
+      <th>BALANCE</th>
+      <th>PRICE</th>
+      <th>PURCHASE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>CASHAPP FULLZ ACCESS</td><td>MALE</td><td>$1600</td><td>$80</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP FULLZ ACCESS</td><td>FEMALE</td><td>$5600</td><td>$280</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>CASHAPP FULLZ ACCESS</td><td>MALE</td><td>$8840</td><td>$425</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP FULLZ ACCESS</td><td>FEMALE</td><td>$10920</td><td>$520</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP FULLZ ACCESS</td><td>MALE</td><td>$14720</td><td>$720</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>CASHAPP FULLZ ACCESS</td><td>FEMALE</td><td>$15200</td><td>$760</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP FULLZ ACCESS</td><td>MALE</td><td>$15800</td><td>$790</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP FULLZ ACCESS</td><td>FEMALE</td><td>$17400</td><td>$870</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>CASHAPP FULLZ ACCESS</td><td>MALE</td><td>$19600</td><td>$980</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP FULLZ ACCESS</td><td>FEMALE</td><td>$20800</td><td>$1040</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+
+    <!-- still keep many under $800 -->
+    <tr><td>CASHAPP BASIC ACCESS</td><td>MALE</td><td>$6000</td><td>$300</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP BASIC ACCESS</td><td>FEMALE</td><td>$6780</td><td>$340</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>CASHAPP BASIC ACCESS</td><td>MALE</td><td>$7380</td><td>$360</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP BASIC ACCESS</td><td>FEMALE</td><td>$8120</td><td>$390</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP BASIC ACCESS</td><td>MALE</td><td>$8780</td><td>$420</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>CASHAPP BASIC ACCESS</td><td>FEMALE</td><td>$9120</td><td>$440</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP BASIC ACCESS</td><td>MALE</td><td>$9800</td><td>$470</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP BASIC ACCESS</td><td>FEMALE</td><td>$10360</td><td>$495</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>CASHAPP BASIC ACCESS</td><td>MALE</td><td>$11200</td><td>$540</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP BASIC ACCESS</td><td>FEMALE</td><td>$11880</td><td>$570</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+
+    <!-- now allow some to go high -->
+    <tr><td>CASHAPP PREMIUM LOGS</td><td>MALE</td><td>$32000</td><td>$1600</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP PREMIUM LOGS</td><td>FEMALE</td><td>$35400</td><td>$1770</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>CASHAPP PREMIUM LOGS</td><td>MALE</td><td>$39800</td><td>$1990</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP PREMIUM LOGS</td><td>FEMALE</td><td>$42000</td><td>$2100</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP PREMIUM LOGS</td><td>MALE</td><td>$46800</td><td>$2340</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP PREMIUM LOGS</td><td>FEMALE</td><td>$49800</td><td>$2490</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+
+    <tr><td>CASHAPP FULL PACKAGE</td><td>MALE</td><td>$60000</td><td>$3000</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP FULL PACKAGE</td><td>FEMALE</td><td>$62800</td><td>$3140</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP FULL PACKAGE</td><td>MALE</td><td>$70000</td><td>$3500</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CASHAPP FULL PACKAGE</td><td>FEMALE</td><td>$76000</td><td>$3800</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>CASHAPP FULL PACKAGE</td><td>MALE</td><td>$80000</td><td>$4000</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+  </tbody>
+</table>
+
+<script>
+  function buy() {
+    window.location.href = "nextpage.html"; // Replace with actual page
+  }
+
+  function sold() {
+    alert("This log is already sold!");
+  }
+</script>
+
+</body>
+</html>

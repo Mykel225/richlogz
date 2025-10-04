@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wells Fargo Bank</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th {
+      background-color: #28a745;
+      padding: 12px;
+      font-size: 18px;
+      text-align: left;
+      color: white;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #444;
+    }
+
+    .buy-btn, .sold-btn {
+      padding: 6px 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .buy-btn {
+      background-color: #3b82f6;
+    }
+
+    .sold-btn {
+      background-color: red;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>WELLS FARGO BANK</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>DESCRIPTION</th>
+      <th>GENDER</th>
+      <th>BALANCE</th>
+      <th>PRICE</th>
+      <th>PURCHASE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS ONLY</td><td>MALE</td><td>$1600</td><td>$80</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS ONLY</td><td>FEMALE</td><td>$4262</td><td>$203</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS ONLY</td><td>MALE</td><td>$7368</td><td>$368</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS ONLY</td><td>FEMALE</td><td>$10350</td><td>$500</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS ONLY</td><td>MALE</td><td>$12576</td><td>$604</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS ONLY</td><td>FEMALE</td><td>$14715</td><td>$705</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS ONLY</td><td>MALE</td><td>$18954</td><td>$922</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS ONLY</td><td>FEMALE</td><td>$21189</td><td>$1014</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS ONLY</td><td>MALE</td><td>$23342</td><td>$1111</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS ONLY</td><td>FEMALE</td><td>$25520</td><td>$1208</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+
+    <tr><td>CHECKINGS+BANK ACCESS ONLY</td><td>MALE</td><td>$27885</td><td>$1325</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>CHECKINGS+BANK ACCESS ONLY</td><td>FEMALE</td><td>$30150</td><td>$1435</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CHECKINGS+BANK ACCESS ONLY</td><td>MALE</td><td>$32400</td><td>$1540</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CHECKINGS+BANK ACCESS ONLY</td><td>FEMALE</td><td>$34974</td><td>$1665</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>CHECKINGS+BANK ACCESS ONLY</td><td>MALE</td><td>$37400</td><td>$1780</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>CHECKINGS+BANK ACCESS ONLY</td><td>FEMALE</td><td>$40110</td><td>$1910</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+
+    <tr><td>SAVINGS ONLY+BANK ACCESS</td><td>MALE</td><td>$42200</td><td>$2000</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS ONLY+BANK ACCESS</td><td>FEMALE</td><td>$45465</td><td>$2175</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>SAVINGS ONLY+BANK ACCESS</td><td>MALE</td><td>$48280</td><td>$2320</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS ONLY+BANK ACCESS</td><td>FEMALE</td><td>$51597</td><td>$2475</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS</td><td>MALE</td><td>$54240</td><td>$2600</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS</td><td>FEMALE</td><td>$57729</td><td>$2775</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS</td><td>MALE</td><td>$60610</td><td>$2920</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+BANK ACCESS</td><td>FEMALE</td><td>$64290</td><td>$3090</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+
+    <tr><td>SAVINGS+MAIL ACCESS</td><td>MALE</td><td>$67040</td><td>$3220</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS+MAIL ACCESS</td><td>FEMALE</td><td>$70070</td><td>$3360</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>SAVINGS+MAIL ACCESS</td><td>MALE</td><td>$73605</td><td>$3530</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS+MAIL ACCESS</td><td>FEMALE</td><td>$76820</td><td>$3680</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+
+    <tr><td>SAVINGS+CHECKINGS+MAIL ACCESS</td><td>MALE</td><td>$80190</td><td>$3860</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>SAVINGS+CHECKINGS+MAIL ACCESS</td><td>FEMALE</td><td>$83360</td><td>$4010</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+  </tbody>
+</table>
+
+<script>
+  function buy() {
+    window.location.href = "nextpage.html"; // Replace with actual link
+  }
+
+  function sold() {
+    alert("This log is already sold!");
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CLONE CARDS — 35 Items</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 960px;
+    }
+    thead th {
+      background: green;
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+    tbody td {
+      padding: 10px;
+      border-bottom: 1px solid #333;
+    }
+    .status-live {
+      font-weight: bold;
+      animation: liveBlink 1.5s infinite;
+    }
+    @keyframes liveBlink {
+      0%, 100% { color: white; }
+      50% { color: yellow; }
+    }
+    .btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn-buy {
+      background: #2f8cff;
+      color: white;
+    }
+    .btn-sold {
+      background: red;
+      color: white;
+      cursor: default;
+      animation: soldBlink 1s infinite;
+    }
+    @keyframes soldBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    @media (max-width: 768px) {
+      table, thead, tbody, tr, td, th { display: block; }
+      thead { display: none; }
+      tr { margin-bottom: 15px; border: 1px solid #333; border-radius: 6px; }
+      td { display: flex; justify-content: space-between; padding: 10px; }
+      td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CLONE CARDS</h1>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>PRODUCT</th>
+        <th>DESCRIPTION</th>
+        <th>STATUS</th>
+        <th>BALANCE</th>
+        <th>PRICE</th>
+        <th>PURCHASE</th>
+      </tr>
+    </thead>
+    <tbody id="cardList"></tbody>
+  </table>
+
+  <script>
+    const items = 35;
+    const minPrice = 196;
+    const cardList = document.getElementById("cardList");
+    const multipliers = [25, 26, 27, 28, 29, 30];
+
+    for (let i = 0; i < items; i++) {
+      const price = minPrice + i * 12; // step up for each row
+      const multiplier = multipliers[i % multipliers.length];
+      const balance = price * multiplier;
+      const sold = (i % 7 === 0 || i % 9 === 0); // some rows sold
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td data-label="PRODUCT">CLONE CARDS</td>
+        <td data-label="DESCRIPTION">VISA CARD OR AMERICAN EXPRESS OR MASTER CARD</td>
+        <td data-label="STATUS"><span class="status-live">LIVE</span></td>
+        <td data-label="BALANCE" style="color:red">$${balance}</td>
+        <td data-label="PRICE" style="color:#2f8cff">$${price}</td>
+        <td data-label="PURCHASE">
+          ${sold 
+            ? `<button class="btn btn-sold">SOLD</button>` 
+            : `<button class="btn btn-buy" onclick="location.href='nextpage.html'">BUY</button>`}
+        </td>
+      `;
+      cardList.appendChild(row);
+    }
+  </script>
+</body>
+</html>

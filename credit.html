@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Credit Cards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #000;
+    }
+
+    .header {
+      text-align: center;
+      padding: 15px;
+      font-weight: bold;
+      font-size: 16px;
+      color: limegreen;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      background: #fff;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .card img {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: green;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      width: 100%;
+    }
+
+    .purchase-btn {
+      background: #007bff;
+      color: #fff;
+    }
+
+    .purchase-btn:hover {
+      background: #0056b3;
+    }
+
+    .sold-btn {
+      background: red;
+      color: #fff;
+      animation: blink 1s infinite;
+      cursor: not-allowed;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    WE ARE ALWAYS AT YOUR SERVICES. YOUR SERVICES IS OUR PRIORITY...
+  </div>
+
+  <h2>AVAILABLE CREDIT CARDS</h2>
+
+  <div class="card-container">
+
+    <!-- CARD 1 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+      <p><strong>Account Holder:</strong> Leonardo Huffman</p>
+      <p><strong>Card Number:</strong> 5445 555***</p>
+      <p><strong>CVV:</strong> 785</p>
+      <p><strong>Price:</strong> $30</p>
+      <p><strong>Card Limit:</strong> $5000/Month</p>
+      <p><strong>Address:</strong> Suffolk Grove 3203</p>
+      <p><strong>Country:</strong> Qatar</p>
+      <div class="price">$30</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 2 SOLD OUT -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+      <p><strong>Account Holder:</strong> Baddie****</p>
+      <p><strong>Card Number:</strong> 5275 201***</p>
+      <p><strong>CVV:</strong> 821</p>
+      <p><strong>Price:</strong> $30</p>
+      <p><strong>Card Limit:</strong> $5500/Month</p>
+      <p><strong>Address:</strong> NorthHampton 3203</p>
+      <p><strong>Country:</strong> United Kingdom</p>
+      <div class="price">$30</div>
+      <button class="btn sold-btn">SOLD OUT</button>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+      <p><strong>Account Holder:</strong> Leane****</p>
+      <p><strong>Card Number:</strong> 5235 200***</p>
+      <p><strong>CVV:</strong> 193</p>
+      <p><strong>Price:</strong> $40</p>
+      <p><strong>Card Limit:</strong> $5400/Month</p>
+      <p><strong>Address:</strong> Maryland 217 St.</p>
+      <p><strong>Country:</strong> United States</p>
+      <div class="price">$40</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+      <p><strong>Account Holder:</strong> Joshua****</p>
+      <p><strong>Card Number:</strong> 4159 750***</p>
+      <p><strong>CVV:</strong> 785</p>
+      <p><strong>Price:</strong> $50</p>
+      <p><strong>Card Limit:</strong> $6000/Month</p>
+      <p><strong>Address:</strong> Virginia Boks 213</p>
+      <p><strong>Country:</strong> United States</p>
+      <div class="price">$50</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+      <p><strong>Account Holder:</strong> Nicholas Talaga</p>
+      <p><strong>Card Number:</strong> 4782 002***</p>
+      <p><strong>CVV:</strong> 348</p>
+      <p><strong>Price:</strong> $40</p>
+      <p><strong>Card Limit:</strong> $7500/Month</p>
+      <p><strong>Address:</strong> Harvey::IL</p>
+      <p><strong>Country:</strong> United States</p>
+      <div class="price">$40</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 2 SOLD OUT -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+      <p><strong>Account Holder:</strong> Prince****</p>
+      <p><strong>Card Number:</strong> 8451 271***</p>
+      <p><strong>CVV:</strong> 826</p>
+      <p><strong>Price:</strong> $40</p>
+      <p><strong>Card Limit:</strong> $7500/Month</p>
+      <p><strong>Address:</strong> NorthHampton 3203</p>
+      <p><strong>Country:</strong> United Kingdom</p>
+      <div class="price">$40</div>
+      <button class="btn sold-btn">SOLD OUT</button>
+    </div>
+
+    <!-- CARD 6 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+      <p><strong>Account Holder:</strong> George As****</p>
+      <p><strong>Card Number:</strong> 5215 341***</p>
+      <p><strong>CVV:</strong> 230</p>
+      <p><strong>Price:</strong> $30</p>
+      <p><strong>Card Limit:</strong> $5000/Month</p>
+      <div class="price">$30</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 7 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+      <p><strong>Account Holder:</strong> Dajuan****</p>
+      <p><strong>Card Number:</strong> 5215 634***</p>
+      <p><strong>CVV:</strong> 137</p>
+      <p><strong>Price:</strong> $30</p>
+      <p><strong>Card Limit:</strong> $5500/Month</p>
+      <div class="price">$30</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 8 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+      <p><strong>Account Holder:</strong> Gardiner****</p>
+      <p><strong>Card Number:</strong> 4266 8417***</p>
+      <p><strong>CVV:</strong> 619</p>
+      <p><strong>Price:</strong> $50</p>
+      <p><strong>Card Limit:</strong> $7800/Month</p>
+      <p><strong>Address:</strong> 108 50th</p>
+      <div class="price">$50</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 9 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+      <p><strong>Account Holder:</strong> Lancelot****</p>
+      <p><strong>Card Number:</strong> 5375 401***</p>
+      <p><strong>CVV:</strong> 578</p>
+      <p><strong>Price:</strong> $30</p>
+      <p><strong>Card Limit:</strong> $6500/Month</p>
+      <div class="price">$30</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 10 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Mastercard">
+      <p><strong>Account Holder:</strong> Samson****</p>
+      <p><strong>Card Number:</strong> 5226 891***</p>
+      <p><strong>CVV:</strong> 137</p>
+      <p><strong>Price:</strong> $30</p>
+      <p><strong>Card Limit:</strong> $5600/Month</p>
+      <div class="price">$30</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 11 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+      <p><strong>Account Holder:</strong> Sharma****</p>
+      <p><strong>Card Number:</strong> 1967 578***</p>
+      <p><strong>CVV:</strong> 891</p>
+      <p><strong>Price:</strong> $40</p>
+      <p><strong>Card Limit:</strong> $7600/Month</p>
+      <div class="price">$40</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 12 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Mastercard">
+      <p><strong>Account Holder:</strong> Davis****</p>
+      <p><strong>Card Number:</strong> 8312 420***</p>
+      <p><strong>CVV:</strong> 835</p>
+      <p><strong>Price:</strong> $30</p>
+      <p><strong>Card Limit:</strong> $5400/Month</p>
+      <div class="price">$30</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 13 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+      <p><strong>Account Holder:</strong> Noah****</p>
+      <p><strong>Card Number:</strong> 4176 891***</p>
+      <p><strong>CVV:</strong> 129</p>
+      <p><strong>Price:</strong> $30</p>
+      <p><strong>Card Limit:</strong> $5100/Month</p>
+      <div class="price">$30</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 2 SOLD OUT -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Mastercard">
+      <p><strong>Account Holder:</strong> Godfred****</p>
+      <p><strong>Card Number:</strong> 9346 701***</p>
+      <p><strong>CVV:</strong> 411</p>
+      <p><strong>Price:</strong> $30</p>
+      <p><strong>Card Limit:</strong> $4500/Month</p>
+      <p><strong>Address:</strong> WestHampton 3203</p>
+      <p><strong>Country:</strong> United Kingdom</p>
+      <div class="price">$30</div>
+      <button class="btn sold-btn">SOLD OUT</button>
+    </div>
+
+    <!-- CARD 14 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+      <p><strong>Account Holder:</strong> Olivia****</p>
+      <p><strong>Card Number:</strong> 4296 891***</p>
+      <p><strong>CVV:</strong> 916</p>
+      <p><strong>Price:</strong> $40</p>
+      <p><strong>Card Limit:</strong> $6900/Month</p>
+      <div class="price">$40</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    <!-- CARD 15 -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Mastercard">
+      <p><strong>Account Holder:</strong> Christian****</p>
+      <p><strong>Card Number:</strong> 1189 718***</p>
+      <p><strong>CVV:</strong> 899</p>
+      <p><strong>Price:</strong> $50</p>
+      <p><strong>Card Limit:</strong> $10600/Month</p>
+      <div class="price">$50</div>
+      <button class="btn purchase-btn" onclick="goNext()">Purchase</button>
+    </div>
+
+    
+  </div>
+
+  <script>
+    function goNext() {
+      window.location.href = "nextpage.html";
+    }
+  </script>
+</body>
+</html>

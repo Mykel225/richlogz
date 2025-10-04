@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PayPal Accounts</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th {
+      background-color: #28a745;
+      padding: 12px;
+      font-size: 18px;
+      text-align: left;
+      color: white;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #444;
+    }
+
+    .buy-btn, .sold-btn {
+      padding: 6px 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .buy-btn {
+      background-color: #3b82f6;
+    }
+
+    .sold-btn {
+      background-color: red;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>PAYPAL ACCOUNTS</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>DESCRIPTION</th>
+      <th>GENDER</th>
+      <th>BALANCE</th>
+      <th>PRICE</th>
+      <th>PURCHASE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Majority prices under $500 -->
+    <tr><td>PAYPAL VERIFIED + EMAIL ACCESS</td><td>MALE</td><td>$2100</td><td>$100</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL VERIFIED + EMAIL ACCESS</td><td>FEMALE</td><td>$5040</td><td>$240</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>PAYPAL VERIFIED + EMAIL ACCESS</td><td>MALE</td><td>$8610</td><td>$420</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL VERIFIED + EMAIL ACCESS</td><td>FEMALE</td><td>$9180</td><td>$440</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL VERIFIED + EMAIL ACCESS</td><td>MALE</td><td>$9980</td><td>$480</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+
+    <!-- Still under 500 -->
+    <tr><td>PAYPAL VERIFIED + EMAIL ACCESS</td><td>FEMALE</td><td>$4200</td><td>$200</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>PAYPAL VERIFIED + EMAIL ACCESS</td><td>MALE</td><td>$7350</td><td>$350</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL VERIFIED + EMAIL ACCESS</td><td>FEMALE</td><td>$8400</td><td>$400</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL VERIFIED + EMAIL ACCESS</td><td>MALE</td><td>$6720</td><td>$320</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL VERIFIED + EMAIL ACCESS</td><td>FEMALE</td><td>$8190</td><td>$390</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+
+    <!-- Some mid prices -->
+    <tr><td>PAYPAL BUSINESS ACCOUNT</td><td>MALE</td><td>$12160</td><td>$580</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL BUSINESS ACCOUNT</td><td>FEMALE</td><td>$14630</td><td>$700</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL BUSINESS ACCOUNT</td><td>MALE</td><td>$18810</td><td>$900</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL BUSINESS ACCOUNT</td><td>FEMALE</td><td>$20990</td><td>$1010</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>PAYPAL BUSINESS ACCOUNT</td><td>MALE</td><td>$23400</td><td>$1120</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+
+    <!-- Some higher ones -->
+    <tr><td>PAYPAL BUSINESS + CARD LINKED</td><td>FEMALE</td><td>$33600</td><td>$1600</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL BUSINESS + CARD LINKED</td><td>MALE</td><td>$42120</td><td>$2000</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+    <tr><td>PAYPAL BUSINESS + CARD LINKED</td><td>FEMALE</td><td>$46200</td><td>$2200</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL BUSINESS + CARD LINKED</td><td>MALE</td><td>$56250</td><td>$2700</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL BUSINESS + CARD LINKED</td><td>FEMALE</td><td>$60900</td><td>$2900</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+
+    <!-- High tier -->
+    <tr><td>PAYPAL PREMIUM</td><td>MALE</td><td>$73600</td><td>$3500</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL PREMIUM</td><td>FEMALE</td><td>$77400</td><td>$3700</td><td><button class="buy-btn" onclick="buy()">BUY</button></td></tr>
+    <tr><td>PAYPAL PREMIUM</td><td>MALE</td><td>$83200</td><td>$4000</td><td><button class="sold-btn" onclick="sold()">SOLD</button></td></tr>
+  </tbody>
+</table>
+
+<script>
+  function buy() {
+    window.location.href = "nextpage.html"; // Replace with actual link
+  }
+
+  function sold() {
+    alert("This log is already sold!");
+  }
+</script>
+
+</body>
+</html>

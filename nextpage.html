@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bitcoin Payment Checkout</title>
+<style>
+  :root{
+    --bg:#0f0f0f;
+    --panel:#cfd4d3;
+    --accent:#1f8fce;
+    --accent-dark:#1670a6;
+    --success:#4caf50;
+    --danger:#e02e2e;
+    --muted:#444;
+    --white:#fff;
+    --maxw:860px;
+    --radius:8px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background:linear-gradient(180deg,#070707 0%, #0b0b0b 100%);
+    color:#111;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    padding:28px 16px;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+  }
+
+  /* Centered card */
+  .card-wrap{
+    width:100%;
+    max-width:var(--maxw);
+    background:transparent;
+  }
+
+  .payment-card{
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:28px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    margin:0 auto;
+  }
+
+  .title{
+    text-align:center;
+    font-weight:800;
+    color:#0b6189;
+    font-size:28px;
+    letter-spacing:1px;
+    margin:0 0 14px;
+  }
+
+  .notice{
+    font-style:italic;
+    font-weight:700;
+    color:#111;
+    line-height:1.24;
+    margin-bottom:18px;
+  }
+
+  /* wallet box */
+  .wallet-box{
+    background:#fff;
+    padding:18px;
+    border-radius:8px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    text-align:center;
+  }
+  .wallet-label{ color:#333; margin-bottom:8px; font-size:14px; }
+  .wallet-addr{
+    display:block;
+    background: #f3f3f3;
+    padding:10px 12px;
+    border-radius:6px;
+    font-family:monospace;
+    word-break:break-all;
+    cursor:pointer;
+    margin:0 auto 12px;
+    max-width:720px;
+    color:#111;
+    border:1px solid rgba(0,0,0,0.05);
+  }
+
+  .controls{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    padding:10px 16px;
+    border-radius:8px;
+    border:0;
+    cursor:pointer;
+    font-weight:700;
+    color:var(--white);
+    background:var(--accent);
+    box-shadow: 0 6px 18px rgba(31,143,206,0.18);
+  }
+  .btn:active{ transform:translateY(1px) }
+  .btn.copy{ background:var(--success); }
+  .btn.upload{ background:var(--accent-dark); }
+  .btn.done{ background: #a6d74f; color:#0b2b19; padding:12px 18px; font-size:16px; }
+
+  /* upload area */
+  .upload-row{
+    margin-top:14px;
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .file-input{
+    display:flex;
+    gap:8px;
+    align-items:center;
+  }
+  .file-input input[type="file"]{ display:inline-block; }
+
+  /* small note */
+  .small{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:8px;
+    text-align:center;
+  }
+
+  /* Done button centered below the card */
+  .done-wrap{
+    text-align:center;
+    margin-top:26px;
+  }
+
+  /* toast */
+  .toast{
+    position:fixed;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:24px;
+    background:rgba(0,0,0,0.85);
+    color:#fff;
+    padding:10px 14px;
+    border-radius:999px;
+    font-size:14px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .18s ease;
+    z-index:9999;
+  }
+  .toast.show{ opacity:1; pointer-events:auto; }
+
+  /* preview */
+  .preview{
+    margin-top:12px;
+    display:flex;
+    justify-content:center;
+  }
+  .preview img{
+    max-width:220px;
+    max-height:140px;
+    object-fit:contain;
+    border-radius:6px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+  }
+
+  /* responsive */
+  @media (max-width:600px){
+    .payment-card{ padding:18px; border-radius:10px; }
+    .title{ font-size:22px; }
+    .wallet-addr{ font-size:13px; padding:8px; }
+    .btn{ padding:8px 12px; }
+    .btn.done{ width:80%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card-wrap" role="main" aria-labelledby="pageTitle">
+  <section class="payment-card" aria-live="polite">
+    <h1 id="pageTitle" class="title">BITCOIN PAYMENT</h1>
+
+    <p class="notice">
+      Please make the exact payment of the amount shown on the checkout page and upload a valid payment screenshot.
+      Your purchase details will be emailed to you once payment is confirmed.
+    </p>
+
+    <div class="wallet-box" role="region" aria-label="Wallet address box">
+      <div class="wallet-label">Wallet Address:</div>
+
+      <!-- wallet address is clickable to copy -->
+      <code id="walletAddress" class="wallet-addr" tabindex="0" title="Click to copy address">
+        1HH9xUQ6ZMqrjFR7DBdWv5bmAr7XF5XXHj
+      </code>
+
+      <div class="controls" aria-hidden="false">
+        <button id="copyBtn" class="btn copy" type="button" aria-label="Copy address">Copy Address</button>
+      </div>
+
+      <div class="upload-row" style="margin-top:14px;">
+        <label for="screenshot" style="color:#111; font-weight:700;">Upload Payment Screenshot:</label>
+        <div class="file-input">
+          <input id="screenshot" type="file" accept="image/*" aria-label="Upload payment screenshot"/>
+        </div>
+      </div>
+
+      <div class="preview" id="previewArea" aria-hidden="true"></div>
+
+      <p class="small">Tip: click the wallet address or the Copy Address button to copy it to your clipboard.</p>
+
+    </div> <!-- wallet-box -->
+
+    <div class="done-wrap">
+      <button id="doneBtn" class="btn done" type="button">DONE TO RECEIVE PURCHASE DETAILS</button>
+    </div>
+
+  </section>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- Modal (simple) -->
+<div id="confirmModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); align-items:center; justify-content:center; z-index:12000;">
+  <div role="dialog" aria-modal="true" style="background:#fff; color:#111; border-radius:10px; max-width:440px; width:92%; padding:18px; text-align:left;">
+    <h3 style="margin-top:0; color:#166a8a;">Confirm submission</h3>
+    <p style="color:#333;">
+      By clicking <strong>Confirm</strong> you acknowledge that you made the exact payment and have uploaded a valid screenshot.
+      We will email your purchase details once payment is verified.
+    </p>
+    <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:14px;">
+      <button id="cancelModal" style="padding:8px 12px; border-radius:6px; border:0; background:#ddd; cursor:pointer;">Cancel</button>
+      <button id="confirmModalBtn" style="padding:8px 12px; border-radius:6px; border:0; background:#1f8fce; color:#fff; cursor:pointer;">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Elements
+  const addrEl = document.getElementById('walletAddress');
+  const copyBtn = document.getElementById('copyBtn');
+  const toast = document.getElementById('toast');
+  const screenshotInput = document.getElementById('screenshot');
+  const previewArea = document.getElementById('previewArea');
+  const doneBtn = document.getElementById('doneBtn');
+
+  const confirmModal = document.getElementById('confirmModal');
+  const cancelModal = document.getElementById('cancelModal');
+  const confirmModalBtn = document.getElementById('confirmModalBtn');
+
+  // Helper: show toast message
+  let toastTimer = null;
+  function showToast(msg, ms = 1800) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=> toast.classList.remove('show'), ms);
+  }
+
+  // Copy function
+  async function copyText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast('Address copied to clipboard');
+    } catch(e) {
+      // fallback: select and copy
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showToast('Address copied to clipboard'); }
+      catch(err) { showToast('Copy failed — manual selection needed', 2500); }
+      document.body.removeChild(ta);
+    }
+  }
+
+  // Click on address or copy button
+  addrEl.addEventListener('click', () => copyText(addrEl.textContent.trim()));
+  addrEl.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyText(addrEl.textContent.trim()); }});
+  copyBtn.addEventListener('click', () => copyText(addrEl.textContent.trim()));
+
+  // File upload preview and basic validation
+  screenshotInput.addEventListener('change', (e) => {
+    previewArea.innerHTML = '';
+    const file = e.target.files && e.target.files[0];
+    if(!file) { return; }
+    // Validate file size (e.g., max 6MB) and type
+    const maxMB = 6;
+    if(file.size > maxMB * 1024 * 1024) {
+      showToast(`File too large. Max ${maxMB} MB allowed.`, 2500);
+      screenshotInput.value = '';
+      return;
+    }
+    if(!file.type.startsWith('image/')) {
+      showToast('Please upload an image file (PNG/JPG).', 2500);
+      screenshotInput.value = '';
+      return;
+    }
+    const img = document.createElement('img');
+    img.alt = 'Payment screenshot preview';
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      img.src = ev.target.result;
+      previewArea.appendChild(img);
+      previewArea.setAttribute('aria-hidden', 'false');
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Done button -> show confirmation dialog
+  doneBtn.addEventListener('click', () => {
+    // If no file uploaded show message and allow user to continue
+    if(!screenshotInput.files || screenshotInput.files.length === 0) {
+      showToast('Please upload a valid payment screenshot before confirming.', 2200);
+      // optionally still allow modal to open? here we require screenshot
+      return;
+    }
+    // Open modal
+    confirmModal.style.display = 'flex';
+    confirmModal.querySelector('[role="dialog"]').focus?.();
+  });
+
+  // Modal handlers
+  cancelModal.addEventListener('click', () => { confirmModal.style.display = 'none'; });
+  confirmModalBtn.addEventListener('click', () => {
+    confirmModal.style.display = 'none';
+    // Simulate upload / verification submission
+    showToast('Payment submitted — we will verify and email details shortly', 3000);
+
+    // example: if you want to "send" the file, you could do form upload via fetch here.
+    // For demo we just reset button state and show the message.
+    doneBtn.disabled = true;
+    doneBtn.textContent = 'Submitted';
+    doneBtn.style.opacity = 0.85;
+
+    // after a short delay, return to an example "thank you" or offer to go to inbox
+    setTimeout(()=> {
+      // If you want to redirect: window.location.href = '/thank-you.html';
+    }, 1200);
+  });
+
+  // Allow clicking background of modal to close
+  confirmModal.addEventListener('click', (e) => {
+    if(e.target === confirmModal) confirmModal.style.display = 'none';
+  });
+
+  // Accessibility: ESC to close modal
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && confirmModal.style.display === 'flex') {
+      confirmModal.style.display = 'none';
+    }
+  });
+
+  // Small enhancement: long-press badge to copy (touch)
+  let touchTimer = null;
+  addrEl.addEventListener('touchstart', (e) => {
+    touchTimer = setTimeout(()=> copyText(addrEl.textContent.trim()), 600);
+  }, {passive:true});
+  addrEl.addEventListener('touchend', ()=> clearTimeout(touchTimer));
+
+  // Small visual flourish: animate wallet address when copied
+  // (handled via toast currently)
+</script>
+</body>
+</html>
