@@ -119,6 +119,186 @@
       }
     });
   </script>
+<!-- Floating Email Button -->
+<div class="email-container">
 
+    <a href="mailto:rich@gmail.com" class="email-btn" id="emailBtn">
+        ✉
+    </a>
+
+    <div class="email-popup" id="emailPopup">
+        <div class="popup-content">
+
+            <h4>Hi there 👋</h4>
+
+            <p>
+                Need our assistance?<br>
+                We are available 24/7.
+            </p>
+
+            <a href="mailto:rich@gmail.com" class="email-link-btn">
+                E-mail Us Here
+            </a>
+
+        </div>
+    </div>
+
+</div>
+
+<style>
+
+/* Floating Email Button */
+.email-btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px;
+    height: 70px;
+    background: #0057ff;
+    color: white;
+    font-size: 34px;
+    text-decoration: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,.3);
+    z-index: 1000;
+
+    /* Blinking animation */
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink{
+    0%{
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0,87,255,.7);
+    }
+
+    70%{
+        transform: scale(1.08);
+        box-shadow: 0 0 0 15px rgba(0,87,255,0);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+}
+
+/* Popup */
+.email-popup{
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    z-index: 999;
+}
+
+.popup-content{
+    width: 300px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.25);
+}
+
+.popup-content h4{
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.popup-content p{
+    margin-bottom: 15px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Email Button Inside Popup */
+.email-link-btn{
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #0057ff;
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.email-link-btn:hover{
+    background: #0040c9;
+}
+
+/* Mobile Phones */
+@media (max-width: 480px){
+
+    .email-btn{
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .email-popup{
+        right: 15px;
+        bottom: 85px;
+    }
+
+    .popup-content{
+        width: 240px;
+    }
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px){
+
+    .popup-content{
+        width: 270px;
+    }
+}
+
+</style>
+
+<script>
+
+const emailBtn = document.getElementById("emailBtn");
+const emailPopup = document.getElementById("emailPopup");
+
+/* Show popup */
+function showPopup(){
+    emailPopup.style.display = "block";
+}
+
+/* Hide popup */
+function hidePopup(){
+    emailPopup.style.display = "none";
+}
+
+/* Hover */
+emailBtn.addEventListener("mouseenter", showPopup);
+emailBtn.addEventListener("mouseleave", function(){
+    setTimeout(hidePopup, 3000);
+});
+
+/* Click */
+emailBtn.addEventListener("click", function(){
+    showPopup();
+});
+
+/* Show every 10 seconds */
+setInterval(() => {
+
+    showPopup();
+
+    setTimeout(() => {
+        hidePopup();
+    }, 5000);
+
+}, 10000);
+
+</script>
 </body>
 </html>
